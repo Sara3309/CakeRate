@@ -1,0 +1,50 @@
+:host {
+  display: block;
+  margin-top: 1rem;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+.info-text {
+  text-align: center;
+}
+
+.cake-image {
+  width:20%;
+  height: auto;
+  display:inline-block;
+  vertical-align:top;
+}
+
+.cake-image img {
+  width: 100%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.comment {
+  width:70%;
+  display:inline-block;
+  vertical-align: top;
+  margin-left: 5%;
+}
+.example-viewport {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  height: 200px;
+  width: 100%;
+
+}
+.cakeName{
+  display:inline-block;
+  width:20%;
+}
+
+.example-item {
+  padding: 5px;
+  margin-left:5px;
+  margin-top:15px;
+  margin-bottom: 2px;
+  text-align:left;
+  font-size: 15px;
+}

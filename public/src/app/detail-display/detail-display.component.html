@@ -1,0 +1,26 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi="true" *ngIf="!isLoading">
+  <mat-expansion-panel *ngFor="let cake of cakes">
+    <mat-expansion-panel-header>
+     <p class="cakeName">Baker: {{cake.name}}</p>
+
+    </mat-expansion-panel-header>
+    <div class="cake-image">
+      <img [src]="cake.imagePath" [alt]="cake.name">
+    </div>
+
+  <div class="comment" *ngIf="cake.comments.length > 0">
+      <cdk-virtual-scroll-viewport class="example-viewport"  itemSize="50">
+        <div *cdkVirtualFor="let comment of cake.comments"  class="example-item">{{comment.commentContent}}<br><br>Rate: {{comment.rate}}</div>
+      </cdk-virtual-scroll-viewport>
+</div>
+<p class="cakeDescription">{{cake.description}}</p>
+<p *ngIf="cake.averageRate != 0"class="cakeAverageRate">Average Rate: {{cake.averageRate}}</p>
+    <mat-action-row>
+      <a mat-button color="primary" [routerLink]="['/edit', cake._id]">EDIT</a>
+      <a mat-button color="basic" [routerLink]="['/edit/post', cake._id]">Add Comment</a>
+      <button mat-button color="warn" (click)="onDelete(cake._id)">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="!isLoading">Sara's cake website</p>

@@ -1,0 +1,40 @@
+<mat-card>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onCommentCake(postForm)" #postForm="ngForm" *ngIf="!isLoading">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="commentContent"
+        [(ngModel)]="comment.commentContent"
+        required
+        minlength="3"
+        placeholder="Enter Comments"
+        #commentContent="ngModel">
+      <mat-error *ngIf="commentContent.invalid">Please enter comments</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select matInput [(value)]="selected" [(ngModel)]="selected" required name="rate" #rate ="ngModel" placeholder="Give it a rate!">
+
+        <mat-option value="1 star">1 Star</mat-option>
+        <mat-option value="2 stars">2 Stars</mat-option>
+        <mat-option value="3 stars">3 Stars</mat-option>
+        <mat-option value="4 stars">4 Stars</mat-option>
+        <mat-option value="5 stars">5 Stars</mat-option>
+      </mat-select>
+      <mat-error *ngIf="rate.invalid">Please rate</mat-error>
+    </mat-form-field>
+    <p>You selected: {{selected}}</p>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit">Save</button>
+  </form>
+<p class="cakeName">Comment on Baker: <br><br>{{commentCake?.name}}</p>
+ <div class="cake-image">
+      <img [src]="commentCake?.imagePath" [alt]="commentCake?.name">
+  </div>
+  <p class="cakeDescription">{{commentCake?.description}}</p>
+
+</mat-card>
+

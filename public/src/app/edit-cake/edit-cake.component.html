@@ -1,0 +1,46 @@
+<mat-card>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onEditCake(postForm)" #postForm="ngForm" *ngIf="!isLoading">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="name"
+        [(ngModel)]="updateCake.name"
+        required
+        minlength="3"
+        placeholder="{{singleCake?.name}}"
+        #name="ngModel">
+      <mat-error *ngIf="name.invalid">Please enter Baker's name</mat-error>
+    </mat-form-field>
+  <mat-form-field>
+    <input
+        matInput
+        type="text"
+        name="image"
+        [(ngModel)]="updateCake.imagePath"
+        required
+        minlength="3"
+        placeholder="Cake's New Image URL"
+        #image="ngModel">
+      <mat-error *ngIf="image.invalid">Please enter Cake's picture URL</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea
+        matInput
+        rows="4"
+        name="description"
+        [(ngModel)]="updateCake.description"
+        required
+        placeholder="{{singleCake?.description}}"
+        #description="ngModel"></textarea>
+      <mat-error *ngIf="description.invalid">Please enter a description.</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit">Update</button>
+  </form>
+</mat-card>
+
